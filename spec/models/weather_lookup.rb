@@ -1,0 +1,3 @@
+describe WeatherLookup do
+
+end

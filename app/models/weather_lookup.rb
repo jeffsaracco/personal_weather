@@ -1,5 +1,5 @@
 class WeatherLookup
-  attr_accessor :temperature, :icon
+  attr_accessor :current, :weekly
 
   def initialize
     weather_hash = fetch_weather
@@ -7,9 +7,11 @@ class WeatherLookup
   end
 
   def assign_values(weather_hash)
-    hourly_forecast_response = weather_hash.parsed_response['response']['hourly_forecast']['forecast'].first
-    self.temperature = hourly_forecast_response['temp']['english']
-    self.icon = hourly_forecast_response['icon_url']
+    hourly_forecast_response = weather_hash.parsed_response['response']['hourly_forecast']['forecast']
+    self.current = Forecast.new(hourly_forecast_response.first)
+    self.weekly = hourly_forecast_response.map do |hourly|
+      Forecast.new(hourly)
+    end
   end
 
   def fetch_weather

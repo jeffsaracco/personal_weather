@@ -1,6 +1,14 @@
 %h1
-  My Personal Weather Lookup
-  It is
-  = @weather_lookup.temperature
-  = image_tag @weather_lookup.icon
+  Current weather:
+  = @weather_lookup.current.temperature
+  = image_tag @weather_lookup.current.icon
 
+- if @weather_lookup.weekly.count > 0
+  %h2 Forecast
+  %table
+    - @weather_lookup.weekly.each do |day|
+      %tr
+        %td
+          = image_tag day.icon
+        %td
+          = day.temperature
