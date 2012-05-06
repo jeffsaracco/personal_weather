@@ -6,6 +6,12 @@ gem 'pg'
 gem "haml-rails"
 gem 'httparty'
 gem 'heroku'
+gem 'sqlite3'
+
+group :test, :development do
+  gem "rspec-rails", "~> 2.0"
+  gem "factory_girl_rails", "~> 3.0"
+end
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -16,4 +22,6 @@ group :assets do
 end
 
 gem 'jquery-rails'
-
+gem "twitter-bootstrap-rails"
+gem 'therubyracer'
+gem 'awesome_print'
