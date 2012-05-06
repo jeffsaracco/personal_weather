@@ -9,6 +9,8 @@
     - @weather_lookup.weekly.each do |day|
       %tr
         %td
+          = day.time
+        %td
           = image_tag day.icon
         %td
           = day.temperature
